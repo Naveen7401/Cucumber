@@ -1,36 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="18.06" tests="5" skipped="0" failures="0" errors="0">
-<testcase classname="Login Functionality" name="Successful login" time="6.565">
+<testsuite name="Cucumber" time="54.318" tests="15" skipped="0" failures="2" errors="0">
+<testcase classname="Alerts,Frames &amp; Window Tab cases" name="Browser windows handling" time="41.707">
+<system-out><![CDATA[
+Given Click on the Alert,frame & Windows tab................................passed
+When Clicking on the browser windows tab....................................passed
+And Clicking the New Window Message button..................................passed
+Then Check the message is displayed.........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Tutorials point" name="Selecting RadioButton" time="37.386">
+<system-out><![CDATA[
+When Clicking the elements option...........................................passed
+And Clicking the Radio Button text in the dropdown..........................passed
+And Selecting the Radio Button..............................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Interaction" name="Draggable" time="44.872">
+<failure type="org.openqa.selenium.TimeoutException" message="Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (7a64731cb23c9cd34f242158b89a6f2e)] -&gt; xpath: //a[text()=' Dragabble']] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.48, chrome: {chromedriverVersion: 136.0.7103.49 (031848bc6ad0..., userDataDir: C:\Users\NAVEEN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58593}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58593/devtoo..., se:cdpVersion: 136.0.7103.48, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 7a64731cb23c9cd34f242158b89a6f2e">
+<![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (7a64731cb23c9cd34f242158b89a6f2e)] -> xpath: //a[text()=' Dragabble']] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.48, chrome: {chromedriverVersion: 136.0.7103.49 (031848bc6ad0..., userDataDir: C:\Users\NAVEEN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58593}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58593/devtoo..., se:cdpVersion: 136.0.7103.48, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 7a64731cb23c9cd34f242158b89a6f2e
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at utils.BaseClass.waitForElementClickable(BaseClass.java:134)
+	at org.stepdefinition.Interaction.clicking_draggable_tab(Interaction.java:61)
+	at ✽.Clicking Draggable tab(classpath:appFeature/Interaction.feature:15)
+]]>
+</failure>
+<system-out><![CDATA[
+Given Clicking the interaction tab..........................................passed
+When Clicking Draggable tab.................................................failed
+When Clicking Axis Restricted...............................................skipped
+Then Dragging the X Axis....................................................skipped
+Then Dragging the Y Axis....................................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Login Functionality" name="Successful login with valid credentials - #1.3" time="31.001">
+<system-out><![CDATA[
+Given Redirected to login page..............................................passed
+When I enter "admin" and "adminpass"........................................passed
+Then I should see a welcome message.........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Register Functionality" name="Successful register" time="27.683">
+<system-out><![CDATA[
+Given I am on the register page.............................................passed
+When I enter valid data in all the fields...................................passed
+Then Account is created.....................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Alerts,Frames &amp; Window Tab cases" name="Browser windows handling" time="39.17">
+<system-out><![CDATA[
+Given Click on the Alert,frame & Windows tab................................passed
+When Clicking on the browser windows tab....................................passed
+And Clicking the New Tab....................................................passed
+Then Check the tab is opened................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Tutorials point" name="Text Box Form Filling" time="41.298">
+<system-out><![CDATA[
+When Clicking the elements option...........................................passed
+And Clicking the Text Box...................................................passed
+And Entering "<FullName>" and "<Email>"and"<Current Address>"and"<Password>".passed
+Then Clicking the Submit button.............................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Interaction" name="Resizeable" time="50.202">
+<failure type="org.openqa.selenium.TimeoutException" message="Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (10ff9f6852f486f908779b7408680118)] -&gt; xpath: //a[text()=' Resizable']] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.48, chrome: {chromedriverVersion: 136.0.7103.49 (031848bc6ad0..., userDataDir: C:\Users\NAVEEN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58606}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58606/devtoo..., se:cdpVersion: 136.0.7103.48, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 10ff9f6852f486f908779b7408680118">
+<![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (10ff9f6852f486f908779b7408680118)] -> xpath: //a[text()=' Resizable']] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.48, chrome: {chromedriverVersion: 136.0.7103.49 (031848bc6ad0..., userDataDir: C:\Users\NAVEEN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58606}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58606/devtoo..., se:cdpVersion: 136.0.7103.48, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 10ff9f6852f486f908779b7408680118
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at utils.BaseClass.waitForElementClickable(BaseClass.java:134)
+	at org.stepdefinition.Interaction.cilcking_the_resizeable(Interaction.java:21)
+	at ✽.Cilcking the Resizeable(classpath:appFeature/Interaction.feature:4)
+]]>
+</failure>
+<system-out><![CDATA[
+Given Clicking the interaction tab..........................................passed
+When Cilcking the Resizeable................................................failed
+And Resizing the box........................................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Login Functionality" name="Successful login" time="21.692">
 <system-out><![CDATA[
 Given I am on the login page................................................passed
 When I enter valid credentials..............................................passed
 Then I should be redirected to the dashboard................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Login Functionality" name="Invalid login" time="2.332">
+<testcase classname="Tutorials point" name="CheckBox Selection" time="40.849">
+<system-out><![CDATA[
+When Clicking the elements option...........................................passed
+When Clicking check Box Dropdown redirect to CheckBox Page..................passed
+And Clicking the checkbox...................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Alerts,Frames &amp; Window Tab cases" name="Browser windows handling" time="38.829">
+<system-out><![CDATA[
+Given Click on the Alert,frame & Windows tab................................passed
+When Clicking on the browser windows tab....................................passed
+And Clicking the New Window.................................................passed
+Then Check the New Window is opened.........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Interaction" name="Horizontal scroll" time="33.936">
+<system-out><![CDATA[
+Given Clicking the widgets dropdown.........................................passed
+When Clicking the horizontal scroll Dropdown................................passed
+And Scrolling horizontal action.............................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Login Functionality" name="Invalid login" time="28.774">
 <system-out><![CDATA[
 When I enter invalid credentials............................................passed
 Then Error message should appear............................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Login Functionality" name="Successful login with valid credentials - #1.1" time="2.646">
+<testcase classname="Login Functionality" name="Successful login with valid credentials - #1.1" time="25.415">
 <system-out><![CDATA[
 Given Redirected to login page..............................................passed
 When I enter "user1" and "pass1"............................................passed
 Then I should see a welcome message.........................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Login Functionality" name="Successful login with valid credentials - #1.2" time="2.413">
+<testcase classname="Login Functionality" name="Successful login with valid credentials - #1.2" time="24.577">
 <system-out><![CDATA[
 Given Redirected to login page..............................................passed
 When I enter "user2" and "pass2"............................................passed
-Then I should see a welcome message.........................................passed
-]]></system-out>
-</testcase>
-<testcase classname="Login Functionality" name="Successful login with valid credentials - #1.3" time="2.75">
-<system-out><![CDATA[
-Given Redirected to login page..............................................passed
-When I enter "admin" and "adminpass"........................................passed
 Then I should see a welcome message.........................................passed
 ]]></system-out>
 </testcase>

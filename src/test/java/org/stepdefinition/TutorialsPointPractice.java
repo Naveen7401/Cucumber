@@ -83,7 +83,7 @@ public class TutorialsPointPractice extends BaseClass {
 		switchingWindow();
 		WebElement waitForElementVisible = waitForElementVisible(By.xpath("//h1[text()='New Tab']"));
 		waitForElementVisible.isDisplayed();
-		BaseClass.driver.close();
+		BaseClass.getDriver().close();
 		switchingBack();
 		waitForElementClickable(Alert_Frame_windows_Objects.AFWO().getAlert_frame_windows_dropDownText());
 	}
@@ -100,7 +100,7 @@ public class TutorialsPointPractice extends BaseClass {
 		switchingWindow();
 		WebElement waitForElementVisible = waitForElementVisible(By.xpath("//h1[text()='New Window']"));
 		waitForElementVisible.isDisplayed();
-		BaseClass.driver.close();
+		BaseClass.getDriver().close();
 		switchingBack();
 		waitForElementClickable(Alert_Frame_windows_Objects.AFWO().getAlert_frame_windows_dropDownText());
 	}
@@ -117,7 +117,7 @@ public class TutorialsPointPractice extends BaseClass {
 		switchingWindow();
 		WebElement waitForElementVisible = waitForElementVisible(By.xpath("//h1[text()='New Window Message']"));
 		waitForElementVisible.isDisplayed();
-		BaseClass.driver.close();
+		BaseClass.getDriver().close();
 		switchingBack();
 		waitForElementClickable(Alert_Frame_windows_Objects.AFWO().getAlert_frame_windows_dropDownText());
 	}

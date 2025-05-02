@@ -1,5 +1,11 @@
+org\stepdefinition\GlobalHooks.class
 org\runner\Runner.class
-org\stepdefinition\Login.class
-pageobject\PageObject.class
+pageobject\Interaction_Object.class
 utils\BaseClass.class
+pageobject\Alert_Frame_windows_Objects.class
+org\runner\ParallelCucumberTest.class
+org\stepdefinition\TutorialsPointPractice.class
+org\stepdefinition\Login.class
 org\stepdefinition\Register.class
+org\stepdefinition\Interaction.class
+pageobject\TutorialPointPageObject.class

@@ -10,7 +10,7 @@ import utils.BaseClass;
 public class Interaction_Object {
 
 	public Interaction_Object() {
-		PageFactory.initElements(BaseClass.driver, this);
+		PageFactory.initElements(BaseClass.getDriver(), this);
 	}
 
 	public static synchronized Interaction_Object IO() {

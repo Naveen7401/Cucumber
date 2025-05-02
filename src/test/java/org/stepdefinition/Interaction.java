@@ -23,14 +23,14 @@ public class Interaction extends BaseClass {
 
 	@When("Resizing the box")
 	public void resizing_the_box() throws InterruptedException {
-		WebElement resizableElement = driver.findElement(By.xpath("//div[@class='both selector']"));
+		WebElement resizableElement = getDriver().findElement(By.xpath("//div[@class='both selector']"));
 
-		Actions a = new Actions(driver);
+		Actions a = new Actions(getDriver());
 		Thread.sleep(2000);
 		a.moveToElement(resizableElement, 90, 35).clickAndHold().moveByOffset(150, 75).release().perform();
-		WebElement ele = driver.findElement(By.xpath("//div[@class='flex-']"));
+		WebElement ele = getDriver().findElement(By.xpath("//div[@class='flex-']"));
 //		Thread.sleep(2000);
-		a.moveToElement(ele,200, 100).clickAndHold().moveByOffset(300, 150).release().perform();
+		a.moveToElement(ele, 200, 100).clickAndHold().moveByOffset(300, 150).release().perform();
 		Thread.sleep(5000);
 	}
 
@@ -48,8 +48,8 @@ public class Interaction extends BaseClass {
 
 	@When("Scrolling horizontal action")
 	public void scrolling_horizontal_action() throws InterruptedException {
-		Actions a = new Actions(driver);// 982 633 930 583
-		WebElement element = driver.findElement(By.xpath("//div[@class='horizan-scroll']"));
+		Actions a = new Actions(getDriver());// 982 633 930 583
+		WebElement element = getDriver().findElement(By.xpath("//div[@class='horizan-scroll']"));
 //		a.moveToElement(element, 100, 50).clickAndHold().moveByOffset(0, 0).release().perform();
 //		Thread.sleep(5000);
 	}
@@ -68,15 +68,15 @@ public class Interaction extends BaseClass {
 
 	@Then("Dragging the X Axis")
 	public void dragging_the_x_axis() throws InterruptedException {
-		WebElement findElement = driver.findElement(By.id("div_element"));
-		Actions a = new Actions(driver);
+		WebElement findElement = getDriver().findElement(By.id("div_element"));
+		Actions a = new Actions(getDriver());
 		a.moveToElement(findElement).clickAndHold().moveByOffset(250, 0).release().perform();
 	}
 
 	@Then("Dragging the Y Axis")
 	public void dragging_the_y_axis() throws InterruptedException {
-		WebElement findElement = driver.findElement(By.id("div_elementy"));
-		Actions a = new Actions(driver);
+		WebElement findElement = getDriver().findElement(By.id("div_elementy"));
+		Actions a = new Actions(getDriver());
 		a.moveToElement(findElement).clickAndHold().moveByOffset((int) 0.828, 220).release().perform();
 	}
 }

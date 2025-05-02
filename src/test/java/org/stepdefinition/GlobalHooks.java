@@ -33,7 +33,7 @@ public class GlobalHooks extends BaseClass {
 	    @After
 	    public void failedCases(Scenario scenario) {
 	        afterScenario(scenario);
-	        tearDown();
+//	        tearDown();
 	    }
 
 	    @AfterAll

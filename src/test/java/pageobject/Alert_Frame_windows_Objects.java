@@ -8,7 +8,7 @@ import utils.BaseClass;
 public class Alert_Frame_windows_Objects {
 
 	public Alert_Frame_windows_Objects() {
-		PageFactory.initElements(BaseClass.driver, this);
+		PageFactory.initElements(BaseClass.getDriver(), this);
 	}
 
 	public static synchronized Alert_Frame_windows_Objects AFWO() {

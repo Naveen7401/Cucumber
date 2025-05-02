@@ -42,29 +42,32 @@ import java.time.format.DateTimeFormatter;
 
 public class BaseClass {
 
-	public static WebDriver driver;
-//	protected WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	private static ThreadLocal<WebDriver> thread = new ThreadLocal<WebDriver>();
+	protected WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 	protected ChromeOptions options;
 	static Properties property = new Properties();
 	static String single = "";
 
-	protected static WebDriverWait wait;
-
-	private void windowHandler() {
-		this.driver = driver;
-		this.single = driver.getWindowHandle();
+//	protected static WebDriverWait wait;
+	public static WebDriver getDriver() {
+		return thread.get();
 	}
+//	private void windowHandler() {
+//		this.driver = driver;
+//		this.single = driver.getWindowHandle();
+//	}
 
 	public static void launchBrowser(String browser) {
-		if (driver != null) {
+		if (getDriver() != null) {
 			System.out.println("Browser already running.");
 			return;
 		}
-
+		WebDriver driver;
 		switch (browser.toLowerCase()) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			driver = new ChromeDriver(options);
 			break;
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();
@@ -80,19 +83,15 @@ public class BaseClass {
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
+		thread.set(driver);
 	}
 
 	public static void openUrl(String url) {
-		driver.get(url);
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		driver.manage().deleteAllCookies();
+		getDriver().get(url);
+//		wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+		getDriver().manage().deleteAllCookies();
 	}
 
-//    public static void tearDown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
 //	public static void launchBrowser(String browser) {
 //		if (driver != null) {
 //			System.out.println("Browser already running.");
@@ -146,15 +145,19 @@ public class BaseClass {
 	}
 
 	public String getPageTitle() {
-		return driver.getTitle();
+		return getDriver().getTitle();
 	}
 
-	public static void tearDown() {
-		if (driver != null) {
-			driver.quit();
-			driver = null;
-		}
-	}
+//	public static void tearDown() {
+//		if (getDriver() != null) {
+//			getDriver().quit();
+////			thread.remove();
+//			WebDriver driver = getDriver();
+//			driver=null;
+////			thread = null;
+////			getDriver() = null;
+//		}
+//	}
 
 	public void verifyTextPresent(WebElement element, String message, String expectedText) {
 		WebElement visibleElement = wait.until(ExpectedConditions.visibilityOf(element));
@@ -165,17 +168,17 @@ public class BaseClass {
 
 	public static void switchingWindow() {
 
-		Set<String> windowHandles = driver.getWindowHandles();
+		Set<String> windowHandles = getDriver().getWindowHandles();
 		for (String handling : windowHandles) {
 			if (single != handling) {
-				driver.switchTo().window(handling);
+				getDriver().switchTo().window(handling);
 
 			}
 		}
 	}
 
 	public static void switchingBack() {
-		driver.switchTo().window(single);
+		getDriver().switchTo().window(single);
 	}
 
 //	public static String getProperty(String key) throws IOException{
@@ -202,9 +205,9 @@ public class BaseClass {
 	}
 
 	public static String captureScreenshot(String scenarioName) {
-		if (driver == null)
+		if (getDriver() == null)
 			return "";
-		File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
 		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
 		String screenshotPath = "src\\test\\resources\\screenshots\\" + scenarioName + ".png";
 //				"test-output/screenshots/" + scenarioName + "_" + timestamp + ".png";
@@ -230,14 +233,14 @@ public class BaseClass {
 
 	public static void beforeSce(Scenario scenario) {
 		String featureFilePath = scenario.getUri().toString();
-		String featureFileName = featureFilePath.substring(featureFilePath.lastIndexOf("/")+1);
-		//need to continue
+		String featureFileName = featureFilePath.substring(featureFilePath.lastIndexOf("/") + 1);
+		// need to continue
 		test = extent.createTest(scenario.getName());
 	}
 
 	public static void afterScenario(Scenario scenario) {
 		if (scenario.isFailed()) {
-			String screenshotPath = captureScreenshot(scenario.getName()+scenario.getLine()+scenario.getId());
+			String screenshotPath = captureScreenshot(scenario.getName() + scenario.getLine() + scenario.getId());
 			test.fail("Scenario Failed: " + scenario.getName());
 			if (scenario.isFailed()) {
 				test.addScreenCaptureFromPath(screenshotPath);

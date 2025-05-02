@@ -8,7 +8,7 @@ import utils.BaseClass;
 public class TutorialPointPageObject extends BaseClass {
 
 	public TutorialPointPageObject() {
-		PageFactory.initElements(BaseClass.driver, this);
+		PageFactory.initElements(BaseClass.getDriver(), this);
 	}
 
 	public static synchronized TutorialPointPageObject tp() {
